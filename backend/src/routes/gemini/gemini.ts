@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { generateGeminiResponse } from "../../services/geminiService.ts";
 
 const router = express.Router();
 
-router.post("/chat", async (req, res) => {
+router.post("/chat", async (req: Request, res: Response) => {
     try {
         const { input } = req.body;
 

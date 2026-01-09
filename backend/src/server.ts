@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import http from "http";
 import geminiRoutes from "./routes/gemini/gemini.ts";
@@ -13,7 +13,7 @@ const API_PATH = "/api/v1";
 
 app.use(`${API_PATH}/gemini`, geminiRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
