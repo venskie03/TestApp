@@ -1,3 +1,19 @@
+# Fokus AI
+
+> **A thinking assistant designed for people with ADHD, dyslexia, and busy minds.**
+
+Fokus AI helps you turn messy, unstructured thoughts into clear, structured outputs. It breaks down big or confusing ideas into small, manageable actions, prioritizes what matters so you can act without overthinking, simplifies language for easier reading, and keeps attention on one clear next step.
+---
+
+## Tech Stack
+
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | React (Vite), TailwindCSS, TypeScript |
+| **Backend** | Node.js (Express), Sequelize, Google GenAI, TypeScript |
+
+---
+
 # Project Setup Guide
 
 This guide explains how to set up and run the backend and client for this project.
