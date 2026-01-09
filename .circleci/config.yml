@@ -1,0 +1,50 @@
+version: 2.1
+
+jobs:
+  lint-backend:
+    docker:
+      - image: cimg/node:18.16
+    steps:
+      - checkout
+      - run:
+          name: Install Backend Dependencies
+          command: |
+            cd backend
+            npm install
+      - run:
+          name: Lint Backend
+          command: |
+            cd backend
+            npm run lint
+
+  deploy-backend:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Deploy Backend via Render API
+          command: |
+            curl --request POST \
+              --url "https://api.render.com/v1/services/srv-d2itp16r433s73e8dpmg/deploys" \
+              --header "accept: application/json" \
+              --header "content-type: application/json" \
+              --header "Authorization: Bearer $RENDER_API_KEY" \
+              --data '{"clearCache":"do_not_clear"}'
+
+workflows:
+  check-main:
+    jobs:
+      - lint-backend:
+          filters:
+            branches:
+              only:
+                - main
+                - staging
+      - deploy-backend:
+          requires:
+            - lint-backend
+          filters:
+            branches:
+              only:
+                - main
