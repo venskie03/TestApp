@@ -3,6 +3,9 @@
 > **A thinking assistant designed for people with ADHD, dyslexia, and busy minds.**
 
 Fokus AI helps you turn messy, unstructured thoughts into clear, structured outputs. It breaks down big or confusing ideas into small, manageable actions, prioritizes what matters so you can act without overthinking, simplifies language for easier reading, and keeps attention on one clear next step.
+
+**🌐 Live Demo:** [https://test-app-nine-smoky.vercel.app/](https://test-app-nine-smoky.vercel.app/)
+
 ---
 
 ## Tech Stack
