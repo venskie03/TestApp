@@ -1,11 +1,11 @@
-import ChatPage from "./pages/ChatPage"
+import LandingPage from "./pages/LandingPage"
 
 function App() {
 
   return (
-    <>
-      <ChatPage />
-    </>
+    <div className="font-sans">
+      <LandingPage />
+    </div>
   )
 }
 
