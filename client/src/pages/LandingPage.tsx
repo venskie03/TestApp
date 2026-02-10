@@ -7,39 +7,21 @@ import MessageIcon from '../components/svg/MeessageIcon';
 import LeafIcon from '../components/svg/LeafIcon';
 import TargetIcon from '../components/svg/TargetIcon';
 import { API } from '../components/api/api';
+import ConfirmationCards from '../components/cards/ConfirmationCards';
 
-type ApiError = {
-    error: string;
-};
 
 const LandingPage = () => {
     const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
-        setError('');
-        setSuccess('');
+        if (email) setIsModalOpen(true);
+    };
 
-        try {
-            const response = await API.createWaitlist({ email });
-            console.log(response.data);
-            setSuccess('You have successfully joined the waitlist!');
-            setEmail('');
-        } catch (error: unknown) {
-            if (typeof error === "object" && error !== null && "error" in error) {
-                console.error((error as ApiError).error);
-                setError((error as ApiError).error);
-            } else {
-                console.error("Unknown error", error);
-                setError("Something went wrong. Please try again.");
-            }
-        } finally {
-            setLoading(false);
-        }
+    const handleConfirmJoin = async () => {
+        await API.createWaitlist({ email });
+        setEmail('');
     };
 
     const cardList = [
@@ -63,6 +45,12 @@ const LandingPage = () => {
     return (
         <div className="min-h-screen bg-[#232627] text-white font-sans overflow-x-hidden relative selection:bg-cyan-500/30">
 
+            <ConfirmationCards
+                isOpen={isModalOpen}
+                email={email}
+                onConfirm={handleConfirmJoin}
+                onClose={() => setIsModalOpen(false)}
+            />
 
             {/* <div className="absolute -top-56 -right-60 h-full md:flex hidden opacity-50 z-10">
                 <OrganicWaveform state="idle" width={1500} height={1500} />
@@ -109,7 +97,16 @@ const LandingPage = () => {
                 {/* Hero Section */}
                 <section className="flex flex-col h-screen pb-10 mt-10 sm:px-3 px-7 items-center justify-center text-center max-w-6xl mx-auto">
                     <img src="/raw/logo.png" alt="logo" className='sm:max-w-44 max-w-32 mb-3 w-full' />
-                    <h1 className="md:text-7xl text-3xl">
+                    <div className="flex md:hidden flex-col">
+                        <h1 className="md:text-7xl text-3xl">
+                            Stop thinking.
+                        </h1>
+                        <h1 className="md:text-7xl text-3xl">
+                            Start executing.
+                        </h1>
+                    </div>
+
+                    <h1 className="md:text-6xl md:flex hidden text-3xl">
                         Stop thinking. Start executing.
                     </h1>
 
@@ -132,7 +129,7 @@ const LandingPage = () => {
                 {/* Problem Section */}
                 <section className="px-4 pb-24 max-w-6xl mx-auto flex flex-col">
                     <div>
-                        <h2 className="text-4xl md:text-5xl mb-6 loading-tight md:text-start text-center">
+                        <h2 className="text-3xl md:text-5xl mb-6 loading-tight md:text-start text-center">
                             Your mind isn't lazy. <br />
                             It's <span className="text-primary">overloaded</span>.
                         </h2>
@@ -154,7 +151,7 @@ const LandingPage = () => {
 
                 {/* How it Works Section */}
                 <section className="px-4 py-24 max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-16 md:flex hidden flex-col">
                         <div className="flex items-center justify-center gap-2">
                             <h2 className="text-3xl md:text-5xl mb-4">
                                 How
@@ -165,6 +162,19 @@ const LandingPage = () => {
                             </h2>
                         </div>
                         <p className="text-gray-300">No setup. No systems. No pressure.</p>
+                    </div>
+
+                    <div className="text-center mb-7 md:hidden flex flex-col">
+                        <div className="flex items-center justify-center gap-2">
+                            <h2 className="text-3xl md:text-5xl mb-1">
+                                How
+                            </h2>
+                            <img src="/raw/logo.png" alt="logo" className='sm:max-w-28 max-w-24 w-full' />
+                        </div>
+                        <h2 className="text-3xl md:text-5xl">
+                            ai works
+                        </h2>
+                        <p className="text-gray-300 mt-3">No setup. No systems. No pressure.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -193,7 +203,7 @@ const LandingPage = () => {
                 </section>
 
                 {/* Waitlist Section */}
-                <section id="waitlist" className="px-4 py-24 max-w-4xl mx-auto relative">
+                <section id="waitlist" className="md:px-4 px-2 py-24 max-w-4xl mx-auto relative">
                     {/* Background glow effects */}
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 blur-3xl -z-10" />
                     <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -z-10" />
@@ -227,24 +237,17 @@ const LandingPage = () => {
                                             placeholder="Enter email here"
                                             className="bg-white text-black focus:outline-none py-3 px-5 w-full sm:rounded-none rounded-full"
                                             value={email}
-                                            onChange={(e) => {
-                                                setEmail(e.target.value)
-                                                setError('')
-                                                setSuccess('')
-                                            }}
+                                            onChange={(e) => setEmail(e.target.value)}
                                             required
                                         />
 
                                         <button
                                             type="submit"
-                                            disabled={loading}
-                                            className={`bg-primary hover:cursor-pointer text-white ${loading ? 'cursor-not-allowed p-3.5    ' : 'cursor-pointer p-3'} sm:max-w-44 max-w-full w-full sm:rounded-none rounded-full sm:mt-0 mt-3 flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed`}
+                                            className={`bg-primary hover:cursor-pointer text-black font-bold     p-3 cursor-pointer sm:max-w-44 max-w-full w-full sm:rounded-none rounded-full sm:mt-0 mt-3 flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed`}
                                         >
-                                            {loading ? <FaSpinner className="animate-spin text-black text-xl" /> : <span className="relative text-black font-bold">Join the waitlist</span>}
+                                            Join the waitlist
                                         </button>
                                     </form>
-                                    {error && <p className="text-red-400 mt-2">{error}</p>}
-                                    {success && <p className="text-green-400 mt-2">{success}</p>}
 
                                     {/* Glass badge */}
                                     <div className="mt-8">
