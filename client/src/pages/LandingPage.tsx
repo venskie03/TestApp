@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBrain, FaRegLightbulb, FaSpinner } from 'react-icons/fa';
+import { FaBrain, FaRegLightbulb } from 'react-icons/fa';
 import { BiTargetLock } from 'react-icons/bi';
 import { MdOutlinePsychology } from 'react-icons/md';
 import { LandingPageCards } from '../components/cards/LandingPageCards';
