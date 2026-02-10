@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import { GEMINI_API } from '../constant/endpoint';
+import { GEMINI_API, USER_API } from '../../constant/endpoint';
 
 const baseURL: string = import.meta.env.VITE_BACKEND_API_URL as string;
 type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch';
@@ -49,4 +49,5 @@ const api = async (
 
 export const API = {
     chatGemini: (body: any) => api(GEMINI_API.chatGemini, 'post', body),
+    createWaitlist: (body: any) => api(USER_API.createWaitlist, 'post', body),
 };

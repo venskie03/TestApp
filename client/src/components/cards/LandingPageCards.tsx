@@ -32,11 +32,9 @@ export const LandingPageCards = ({
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-white relative">
                     {title}
-                    <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-primary to-transparent transition-all duration-500" />
                 </h3>
                 <p className="text-gray-300 text-md leading-relaxed relative">
                     {description}
-                    <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 </p>
             </div>
         </div>

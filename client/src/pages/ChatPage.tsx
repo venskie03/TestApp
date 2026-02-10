@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { API } from '../helper/api';
+import { API } from '../components/api/api';
 import { FaUser, FaRobot, FaPaperPlane } from 'react-icons/fa';
 
 interface GeminiData {

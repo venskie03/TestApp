@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { FaBrain, FaRegLightbulb, FaCheck, FaArrowRight } from 'react-icons/fa';
+import { FaBrain, FaRegLightbulb } from 'react-icons/fa';
 import { BiTargetLock } from 'react-icons/bi';
-import { MdOutlinePsychology, MdOutlineWaves } from 'react-icons/md';
-import { IoMdInfinite } from 'react-icons/io';
+import { MdOutlinePsychology } from 'react-icons/md';
 import { LandingPageCards } from '../components/cards/LandingPageCards';
+import MessageIcon from '../components/svg/MeessageIcon';
+import LeafIcon from '../components/svg/LeafIcon';
+import TargetIcon from '../components/svg/TargetIcon';
 
 const LandingPage = () => {
     const [email, setEmail] = useState('');
@@ -16,26 +18,34 @@ const LandingPage = () => {
 
     const cardList = [
         {
-            icon: <BiTargetLock className='text-black relative z-10' />,
+            icon: <MessageIcon />,
+            title: "Dump your thoughts",
+            description: "Write or speak what's on your mind."
+        },
+        {
+            icon: <TargetIcon />,
             title: "Fokus clarifies",
             description: "AI untangles the clutter and finds what matters."
         },
         {
-            icon: <BiTargetLock className='text-black relative z-10' />,
-            title: "Fokus clarifies",
-            description: "AI untangles the clutter and finds what matters."
-        },
-        {
-            icon: <BiTargetLock className='text-black relative z-10' />,
-            title: "Fokus clarifies",
-            description: "AI untangles the clutter and finds what matters."
+            icon: <LeafIcon />,
+            title: "Move forward calmly",
+            description: "Get a clear plan for today."
         }
     ]
 
     return (
         <div className="min-h-screen bg-[#232627] text-white font-sans overflow-x-hidden relative selection:bg-cyan-500/30">
 
-            {/* Background Video */}
+
+            {/* <div className="absolute -top-56 -right-60 h-full md:flex hidden opacity-50 z-10">
+                <OrganicWaveform state="idle" width={1500} height={1500} />
+            </div>
+
+            <div className="absolute top-0 -right-96 h-full md:hidden flex opacity-50 z-10">
+                <OrganicWaveform state="idle" width={1000} height={1000} />
+            </div> */}
+
             <video
                 autoPlay
                 loop
@@ -55,28 +65,38 @@ const LandingPage = () => {
             </div>
 
             {/* Navbar Placeholder */}
-            <nav className="relative z-50 flex justify-between items-center px-6 py-6 max-w-7xl mx-auto sticky top-0">
-                <img src="/raw/logo.png" alt="logo" className='max-w-24 w-full' />
+            <nav className=" z-50 flex px-16 fixed py-5 w-full top-0">
+                <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/10" />
+
+                {/* Animated border glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Subtle shine effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                <div className="flex md:justify-start justify-center z-20 w-full">
+                    <img src="/raw/logo.png" alt="logo" className='sm:max-w-24 max-w-16 w-full' />
+                </div>
             </nav>
+
 
             <main className="relative z-10">
                 {/* Hero Section */}
-                <section className="flex flex-col h-screen pb-36 sm:px-3 px-7 items-center justify-center text-center max-w-6xl mx-auto">
+                <section className="flex flex-col h-screen pb-10 mt-10 sm:px-3 px-7 items-center justify-center text-center max-w-6xl mx-auto">
                     <img src="/raw/logo.png" alt="logo" className='sm:max-w-44 max-w-32 mb-3 w-full' />
-                    <h1 className="sm:text-7xl text-4xl">
+                    <h1 className="md:text-7xl text-3xl">
                         Stop thinking. Start executing.
                     </h1>
 
-                    <p className="text-xl sm:text-5xl mt-5 text-primary font-medium sm:mb-8 mb-3">
+                    <p className="text-xl md:text-5xl mt-5 text-primary font-medium sm:mb-8 mb-3">
                         Without pressure. Without guilt.
                     </p>
 
-                    <p className="max-w-xl text-gray-400 text-lg mb-10 leading-relaxed text-sm sm:text-md">
+                    <p className="max-w-xl text-gray-300 md:text-lg mb-10 leading-relaxed text-sm sm:text-md">
                         Fokus is an AI assistant that clears mental clutter and helps you decide what actually matters — in seconds.
                     </p>
 
                     <button
-                        className="group relative px-8 py-4 bg-primary text-black font-bold rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)]"
+                        className="group hover:cursor-pointer relative px-8 py-4 bg-primary text-black font-bold rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)]"
                         onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                         Join the waitlist
@@ -86,7 +106,7 @@ const LandingPage = () => {
                 {/* Problem Section */}
                 <section className="px-4 pb-24 max-w-6xl mx-auto flex flex-col">
                     <div>
-                        <h2 className="text-4xl md:text-5xl text-4xl mb-6 loading-tight sm:text-start text-center">
+                        <h2 className="text-4xl md:text-5xl mb-6 loading-tight md:text-start text-center">
                             Your mind isn't lazy. <br />
                             It's <span className="text-primary">overloaded</span>.
                         </h2>
@@ -99,7 +119,7 @@ const LandingPage = () => {
                             "Knowing what you should do — but not what to do first"
                         ].map((item, idx) => (
                             <div key={idx} className="flex items-center gap-3 text-lg text-gray-300">
-                                <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+                                <div className="max-w-3 w-full h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
                                 {item}
                             </div>
                         ))}
@@ -109,9 +129,15 @@ const LandingPage = () => {
                 {/* How it Works Section */}
                 <section className="px-4 py-24 max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl mb-4">
-                            How <span className="inline-block mx-1"><img src="/raw/logo.png" alt="logo" className='sm:max-w-36 max-w-28 w-full' /></span> ai works
-                        </h2>
+                        <div className="flex items-center justify-center gap-2">
+                            <h2 className="text-3xl md:text-5xl mb-4">
+                                How
+                            </h2>
+                            <img src="/raw/logo.png" alt="logo" className='sm:max-w-36 max-w-28 w-full' />
+                            <h2 className="text-3xl md:text-5xl mb-4">
+                                ai works
+                            </h2>
+                        </div>
                         <p className="text-gray-300">No setup. No systems. No pressure.</p>
                     </div>
 
@@ -151,16 +177,15 @@ const LandingPage = () => {
 
 
                         <div className="relative p-[2px] rounded-[2.5rem] bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl">
-
-
-
                             {/* Inner glass container */}
-                            <div className="bg-gradient-to-b from-black/60 via-black/50 to-black/60 rounded-[2.3rem] p-10 md:p-16 text-center backdrop-blur-2xl border border-white/10 relative overflow-hidden">
+                            <div className="bg-gradient-to-b from-black/60 via-black/50 to-black/60 rounded-[2.3rem] p-8 text-center backdrop-blur-2xl border border-white/10 relative overflow-hidden">
 
 
-
-                                <div className="relative z-10">
-                                    <h2 className="text-3xl md:text-5xl mb-4 bg-gradient-to-r from-cyan-300 via-white to-cyan-300 bg-clip-text text-transparent animate-gradient">
+                                <div className="flex w-full sm:justify-start justify-center">
+                                    <img src="/raw/logo.png" alt="logo" className='max-w-20 w-full' />
+                                </div>
+                                <div className="relative z-10 py-10">
+                                    <h2 className="text-3xl md:text-5xl mb-4  via-white">
                                         Why a waitlist?
                                     </h2>
 
@@ -174,7 +199,7 @@ const LandingPage = () => {
                                         <input
                                             type="email"
                                             placeholder="Enter email here"
-                                            className="bg-white text-black focus:outline-none p-3 w-full sm:rounded-none rounded-full"
+                                            className="bg-white text-black focus:outline-none py-3 px-5 w-full sm:rounded-none rounded-full"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
@@ -182,7 +207,7 @@ const LandingPage = () => {
 
                                         <button
                                             type="submit"
-                                            className="bg-primary text-white p-3 sm:max-w-44 max-w-full w-full sm:rounded-none rounded-full sm:mt-0 mt-3"
+                                            className="bg-primary hover:cursor-pointer text-white p-3 sm:max-w-44 max-w-full w-full sm:rounded-none rounded-full sm:mt-0 mt-3"
                                         >
                                             <span className="relative text-black">Join the waitlist</span>
                                         </button>
