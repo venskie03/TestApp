@@ -169,10 +169,10 @@ const LandingPage = () => {
                             <h2 className="text-3xl md:text-5xl mb-1">
                                 How
                             </h2>
-                            <img src="/raw/logo.png" alt="logo" className='sm:max-w-28 max-w-24 w-full' />
+                            <img src="/raw/logo.png" alt="logo" className='max-w-28 w-full' />
                         </div>
                         <h2 className="text-3xl md:text-5xl">
-                            ai works
+                            works
                         </h2>
                         <p className="text-gray-300 mt-3">No setup. No systems. No pressure.</p>
                     </div>
