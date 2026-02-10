@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 5000;
 const server = http.createServer(app);
 const API_PATH = "/api/v1";
 

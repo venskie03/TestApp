@@ -1,19 +1,45 @@
 import React, { useState } from 'react';
-import { FaBrain, FaRegLightbulb } from 'react-icons/fa';
+import { FaBrain, FaRegLightbulb, FaSpinner } from 'react-icons/fa';
 import { BiTargetLock } from 'react-icons/bi';
 import { MdOutlinePsychology } from 'react-icons/md';
 import { LandingPageCards } from '../components/cards/LandingPageCards';
 import MessageIcon from '../components/svg/MeessageIcon';
 import LeafIcon from '../components/svg/LeafIcon';
 import TargetIcon from '../components/svg/TargetIcon';
+import { API } from '../components/api/api';
+
+type ApiError = {
+    error: string;
+};
 
 const LandingPage = () => {
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [success, setSuccess] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle waitlist submission
-        console.log('Submitted:', email);
+        setLoading(true);
+        setError('');
+        setSuccess('');
+
+        try {
+            const response = await API.createWaitlist({ email });
+            console.log(response.data);
+            setSuccess('You have successfully joined the waitlist!');
+            setEmail('');
+        } catch (error: unknown) {
+            if (typeof error === "object" && error !== null && "error" in error) {
+                console.error((error as ApiError).error);
+                setError((error as ApiError).error);
+            } else {
+                console.error("Unknown error", error);
+                setError("Something went wrong. Please try again.");
+            }
+        } finally {
+            setLoading(false);
+        }
     };
 
     const cardList = [
@@ -201,17 +227,24 @@ const LandingPage = () => {
                                             placeholder="Enter email here"
                                             className="bg-white text-black focus:outline-none py-3 px-5 w-full sm:rounded-none rounded-full"
                                             value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            onChange={(e) => {
+                                                setEmail(e.target.value)
+                                                setError('')
+                                                setSuccess('')
+                                            }}
                                             required
                                         />
 
                                         <button
                                             type="submit"
-                                            className="bg-primary hover:cursor-pointer text-white p-3 sm:max-w-44 max-w-full w-full sm:rounded-none rounded-full sm:mt-0 mt-3"
+                                            disabled={loading}
+                                            className={`bg-primary hover:cursor-pointer text-white ${loading ? 'cursor-not-allowed p-3.5    ' : 'cursor-pointer p-3'} sm:max-w-44 max-w-full w-full sm:rounded-none rounded-full sm:mt-0 mt-3 flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed`}
                                         >
-                                            <span className="relative text-black">Join the waitlist</span>
+                                            {loading ? <FaSpinner className="animate-spin text-black text-xl" /> : <span className="relative text-black font-bold">Join the waitlist</span>}
                                         </button>
                                     </form>
+                                    {error && <p className="text-red-400 mt-2">{error}</p>}
+                                    {success && <p className="text-green-400 mt-2">{success}</p>}
 
                                     {/* Glass badge */}
                                     <div className="mt-8">
