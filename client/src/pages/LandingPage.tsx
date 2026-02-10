@@ -15,7 +15,7 @@ type ApiError = {
 const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
