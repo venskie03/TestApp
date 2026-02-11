@@ -80,42 +80,40 @@ const LandingPage = () => {
             <main className="relative z-10">
                 {/* Hero Section */}
                 <section className="relative flex flex-col h-screen pb-10 mt-10 sm:px-3 px-7 items-center justify-center text-center mx-auto">
+                    <div className="absolute w-full h-30 bg-[#232627] z-10 -bottom-10 blur-xl" />
+
                     <video
                         autoPlay
                         loop
                         muted
                         playsInline
-                        className="absolute inset-0 w-full h-full object-cover -z-10 opacity-5"
+                        className="absolute inset-0 w-full h-full object-cover -z-10 opacity-15"
                     >
                         <source src="/video/waveform.webm" type="video/webm" />
                         Your browser does not support the video tag.
                     </video>
 
                     <div className="mb-3">
-                        <BlueLogoIcon />
+                        <img src="/raw/logo.png" alt="logo" className='md:max-w-44 max-w-30 w-full' />
                     </div>
 
-                    <div className="flex flex-col md:flex-row md:gap-0.5 gap-1 mb-4 2xl:text-5xl xl:text-4xl md:text-3xl text-3xl">
+                    <div className="flex flex-col md:flex-row md:gap-1 gap-1 mb-4 md:text-6xl text-4xl">
                         <h1 className="">
                             Stop thinking.
                         </h1>
                         <h1 className=" ">
                             Start executing.
                         </h1>
-                        <h1 className="">
-                            Without pressure.
-                        </h1>
-                        <h1 className="">
-                            Without guilt.
-                        </h1>
                     </div>
 
-                    <p className="max-w-xl text-gray-300 md:text-lg mb-10 leading-relaxed text-sm sm:text-md">
-                        Fokus is an AI assistant that clears mental clutter and helps you decide what actually matters — in seconds.
-                    </p>
+                    <h1 className="text-primary md:text-4xl text-xl mb-8">
+                        Without pressure.  Without guilt.
+                    </h1>
+
+
 
                     <button
-                        className="group hover:cursor-pointer relative px-8 py-4 bg-primary text-black font-bold rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)]"
+                        className="group hover:cursor-pointer relative px-8 md:px-14 py-4 bg-primary text-black font-bold rounded-full text-lg hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)]"
                         onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                         Join the waitlist
@@ -123,10 +121,10 @@ const LandingPage = () => {
                 </section>
 
                 {/* Problem Section */}
-                <section className="px-4 pb-24  mx-auto flex flex-col relative justify-center items-center w-full">
+                <section className="px-4 pb-24 md:px-20  mx-auto flex flex-col relative justify-center items-center w-full">
                     <div className="absolute -bottom-44 left-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
 
-                    <div className="max-w-7xl mt-16 w-full flex flex-col z-20">
+                    <div className="max-w-7xl mt-16 md:mt-20 w-full flex flex-col z-20">
                         <div>
                             <h2 className="text-3xl md:text-5xl mb-6 loading-tight md:text-start text-center">
                                 Your mind isn't lazy. <br />
@@ -158,7 +156,7 @@ const LandingPage = () => {
                                 <BlueLogoIcon />
                             </div>
                             <h2 className="text-3xl md:text-5xl mb-4">
-                                How Fokus ai works
+                                How Fokus AI works
                             </h2>
                         </div>
                         <p className="text-gray-300">No setup. No systems. No pressure.</p>
@@ -175,7 +173,7 @@ const LandingPage = () => {
                 <section className="px-4 py-24 w-full mx-auto flex sm:flex-row flex-col justify-center items-center relative">
                     <div className="absolute -bottom-32 right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
                     <div className="flex md:flex-row flex-col max-w-5xl md:py-24 z-20">
-                        <h2 className="text-3xl md:text-5xl sm:mb-12 text-center max-w-80 w-full">Who it's for?</h2>
+                        <h2 className="text-3xl md:text-5xl max-w-full md:text-start text-center  md:max-w-80 w-full">Who it's for?</h2>
 
                         <div className="flex flex-wrap justify-start gap-4 w-full mt-10">
                             {[
@@ -216,7 +214,7 @@ const LandingPage = () => {
                                     </h2>
 
                                     <p className="text-gray-300 mb-8 max-w-lg mx-auto leading-relaxed">
-                                        We're building Fokus ai carefully — focused, calm, and intentional.
+                                        We're building Fokus AI carefully — focused, calm, and intentional.
                                         The waitlist gets early access and helps shape the product.
                                     </p>
 
