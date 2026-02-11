@@ -136,7 +136,7 @@ const LandingPage = () => {
                                 "Too many thoughts at once",
                                 "Too many things to do",
                                 "Productivity apps that add more noise",
-                                "Knowing what you should do — but not what to do first"
+                                "Knowing what you should do but not what to do first"
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-center gap-3 text-lg text-gray-300">
                                     <div className="max-w-3 w-full h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
@@ -214,7 +214,7 @@ const LandingPage = () => {
                                     </h2>
 
                                     <p className="text-gray-300 mb-8 max-w-lg mx-auto leading-relaxed">
-                                        We're building Fokus AI carefully — focused, calm, and intentional.
+                                        We're building Fokus AI carefully focused, calm, and intentional.
                                         The waitlist gets early access and helps shape the product.
                                     </p>
 
