@@ -93,7 +93,7 @@ const LandingPage = () => {
                         Your browser does not support the video tag.
                     </video>
 
-                    <div className="mb-3 md:pr-0 pl-1">
+                    <div className="mb-3 md:pr-0 pr-2">
                         <img src="/raw/logo.png" alt="logo" className='md:max-w-44 max-w-30 w-full' />
                     </div>
 
