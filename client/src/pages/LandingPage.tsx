@@ -93,7 +93,7 @@ const LandingPage = () => {
                         Your browser does not support the video tag.
                     </video>
 
-                    <div className="mb-3">
+                    <div className="mb-3 md:pr-0 pl-1">
                         <img src="/raw/logo.png" alt="logo" className='md:max-w-44 max-w-30 w-full' />
                     </div>
 
@@ -214,7 +214,7 @@ const LandingPage = () => {
                                     </h2>
 
                                     <p className="text-gray-300 mb-8 max-w-lg mx-auto leading-relaxed">
-                                        We're building Fokus AI carefully focused, calm, and intentional.
+                                        We're building Fokus AI with clarity, calmness, and intention.
                                         The waitlist gets early access and helps shape the product.
                                     </p>
 
