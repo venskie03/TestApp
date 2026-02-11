@@ -223,7 +223,7 @@ const LandingPage = () => {
                                         <input
                                             type="email"
                                             placeholder="Enter email here"
-                                            className="bg-white text-black focus:outline-none py-3 px-5 w-full sm:rounded-none rounded-full"
+                                            className="bg-white text-center sm:text-start text-black focus:outline-none py-3 px-5 w-full sm:rounded-none rounded-full"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
