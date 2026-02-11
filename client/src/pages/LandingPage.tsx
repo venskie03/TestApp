@@ -8,6 +8,7 @@ import LeafIcon from '../components/svg/LeafIcon';
 import TargetIcon from '../components/svg/TargetIcon';
 import { API } from '../components/api/api';
 import ConfirmationCards from '../components/cards/ConfirmationCards';
+import BlueLogoIcon from '../components/svg/BlueLogoIcon';
 
 
 const LandingPage = () => {
@@ -60,23 +61,6 @@ const LandingPage = () => {
                 <OrganicWaveform state="idle" width={1000} height={1000} />
             </div> */}
 
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="fixed inset-0 w-full h-full object-cover z-10 opacity-10"
-            >
-                <source src="./video/waveform.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-
-            {/* Background Gradients/Glows */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
-                <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[120px]" />
-            </div>
 
             {/* Navbar Placeholder */}
             <nav className=" z-50 flex px-16 fixed py-5 w-full top-0">
@@ -95,24 +79,36 @@ const LandingPage = () => {
 
             <main className="relative z-10">
                 {/* Hero Section */}
-                <section className="flex flex-col h-screen pb-10 mt-10 sm:px-3 px-7 items-center justify-center text-center max-w-6xl mx-auto">
-                    <img src="/raw/logo.png" alt="logo" className='sm:max-w-44 max-w-32 mb-3 w-full' />
-                    <div className="flex md:hidden flex-col">
-                        <h1 className="md:text-7xl text-3xl">
-                            Stop thinking.
-                        </h1>
-                        <h1 className="md:text-7xl text-3xl">
-                            Start executing.
-                        </h1>
+                <section className="relative flex flex-col h-screen pb-10 mt-10 sm:px-3 px-7 items-center justify-center text-center mx-auto">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover -z-10 opacity-5"
+                    >
+                        <source src="/video/waveform.webm" type="video/webm" />
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div className="mb-3">
+                        <BlueLogoIcon />
                     </div>
 
-                    <h1 className="md:text-6xl md:flex hidden text-3xl">
-                        Stop thinking. Start executing.
-                    </h1>
-
-                    <p className="text-xl md:text-5xl mt-5 text-primary font-medium sm:mb-8 mb-3">
-                        Without pressure. Without guilt.
-                    </p>
+                    <div className="flex flex-col md:flex-row md:gap-0.5 gap-1 mb-4 2xl:text-5xl xl:text-4xl md:text-3xl text-3xl">
+                        <h1 className="">
+                            Stop thinking.
+                        </h1>
+                        <h1 className=" ">
+                            Start executing.
+                        </h1>
+                        <h1 className="">
+                            Without pressure.
+                        </h1>
+                        <h1 className="">
+                            Without guilt.
+                        </h1>
+                    </div>
 
                     <p className="max-w-xl text-gray-300 md:text-lg mb-10 leading-relaxed text-sm sm:text-md">
                         Fokus is an AI assistant that clears mental clutter and helps you decide what actually matters — in seconds.
@@ -127,54 +123,45 @@ const LandingPage = () => {
                 </section>
 
                 {/* Problem Section */}
-                <section className="px-4 pb-24 max-w-6xl mx-auto flex flex-col">
-                    <div>
-                        <h2 className="text-3xl md:text-5xl mb-6 loading-tight md:text-start text-center">
-                            Your mind isn't lazy. <br />
-                            It's <span className="text-primary">overloaded</span>.
-                        </h2>
-                    </div>
-                    <div className="space-y-4 pl-2">
-                        {[
-                            "Too many thoughts at once",
-                            "Too many things to do",
-                            "Productivity apps that add more noise",
-                            "Knowing what you should do — but not what to do first"
-                        ].map((item, idx) => (
-                            <div key={idx} className="flex items-center gap-3 text-lg text-gray-300">
-                                <div className="max-w-3 w-full h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
-                                {item}
-                            </div>
-                        ))}
+                <section className="px-4 pb-24  mx-auto flex flex-col relative justify-center items-center w-full">
+                    <div className="absolute -bottom-44 left-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+
+                    <div className="max-w-7xl mt-16 w-full flex flex-col z-20">
+                        <div>
+                            <h2 className="text-3xl md:text-5xl mb-6 loading-tight md:text-start text-center">
+                                Your mind isn't lazy. <br />
+                                It's <span className="text-primary">overloaded</span>.
+                            </h2>
+                        </div>
+                        <div className="space-y-4 pl-2">
+                            {[
+                                "Too many thoughts at once",
+                                "Too many things to do",
+                                "Productivity apps that add more noise",
+                                "Knowing what you should do — but not what to do first"
+                            ].map((item, idx) => (
+                                <div key={idx} className="flex items-center gap-3 text-lg text-gray-300">
+                                    <div className="max-w-3 w-full h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+                                    {item}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </section>
 
                 {/* How it Works Section */}
                 <section className="px-4 py-24 max-w-7xl mx-auto">
-                    <div className="text-center mb-16 md:flex hidden flex-col">
-                        <div className="flex items-center justify-center gap-2">
+
+                    <div className="text-center mb-16 flex-col">
+                        <div className="flex flex-col items-center justify-center gap-2">
+                            <div className="mb-3">
+                                <BlueLogoIcon />
+                            </div>
                             <h2 className="text-3xl md:text-5xl mb-4">
-                                How
-                            </h2>
-                            <img src="/raw/logo.png" alt="logo" className='sm:max-w-36 max-w-28 w-full' />
-                            <h2 className="text-3xl md:text-5xl mb-4">
-                                ai works
+                                How Fokus ai works
                             </h2>
                         </div>
                         <p className="text-gray-300">No setup. No systems. No pressure.</p>
-                    </div>
-
-                    <div className="text-center mb-7 md:hidden flex flex-col">
-                        <div className="flex items-center justify-center gap-2">
-                            <h2 className="text-3xl md:text-5xl mb-1">
-                                How
-                            </h2>
-                            <img src="/raw/logo.png" alt="logo" className='max-w-28 w-full' />
-                        </div>
-                        <h2 className="text-3xl md:text-5xl">
-                            works
-                        </h2>
-                        <p className="text-gray-300 mt-3">No setup. No systems. No pressure.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -185,20 +172,23 @@ const LandingPage = () => {
                 </section>
 
                 {/* Who it's for Section */}
-                <section className="px-4 py-24 max-w-5xl mx-auto flex sm:flex-row flex-col items-center">
-                    <h2 className="text-3xl md:text-5xl sm:mb-12 text-center max-w-80 w-full">Who it's for?</h2>
+                <section className="px-4 py-24 w-full mx-auto flex sm:flex-row flex-col justify-center items-center relative">
+                    <div className="absolute -bottom-32 right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+                    <div className="flex md:flex-row flex-col max-w-5xl md:py-24 z-20">
+                        <h2 className="text-3xl md:text-5xl sm:mb-12 text-center max-w-80 w-full">Who it's for?</h2>
 
-                    <div className="flex flex-wrap justify-start gap-4 w-full sm:mt-38 mt-7">
-                        {[
-                            { label: "ADHD minds", icon: <FaBrain /> },
-                            { label: "Creators & founders", icon: <FaRegLightbulb /> },
-                            { label: "Anyone feeling mentally cluttered", icon: <MdOutlinePsychology /> },
-                            { label: "Busy professionals", icon: <BiTargetLock /> }
-                        ].map((tag, idx) => (
-                            <div key={idx} className="flex items-center gap-3 px-6 py-4 pr-24 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/10 transition-all cursor-default">
-                                <span className="font-medium text-gray-200">{tag.label}</span>
-                            </div>
-                        ))}
+                        <div className="flex flex-wrap justify-start gap-4 w-full mt-10">
+                            {[
+                                { label: "ADHD minds", icon: <FaBrain /> },
+                                { label: "Creators & founders", icon: <FaRegLightbulb /> },
+                                { label: "Anyone feeling mentally cluttered", icon: <MdOutlinePsychology /> },
+                                { label: "Busy professionals", icon: <BiTargetLock /> }
+                            ].map((tag, idx) => (
+                                <div key={idx} className="flex items-center gap-3 px-6 py-4 pr-24 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/10 transition-all cursor-default">
+                                    <span className="font-medium text-gray-200">{tag.label}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </section>
 
